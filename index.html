@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>bilibili相簿 - 随机图片瀑布流</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/default.css">
+		<link rel="stylesheet" href="css/swipebox.css">
+		<meta name="referrer" content="no-referrer" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+
+			a,
+			img {
+				border: 0;
+			}
+
+			body {
+				font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+			}
+
+			/* container */
+			#container {
+				width: 940px;
+				margin: 50px auto;
+			}
+
+			#container ul {
+				width: 300px;
+				list-style: none;
+				float: left;
+				margin-right: 20px;
+			}
+
+			#container ul li {
+				margin-bottom: 20px;
+			}
+
+			#container ul li img {
+				width: 300px;
+			}
+
+			.htmleaf-icon,
+			.htmleaf-header h1 span {
+				color: #fff;
+			}
+
+			.container {
+				width: 40%;
+				margin: 30px auto;
+			}
+
+			.container:nth-child(even) {
+				background: whitesmoke
+			}
+
+			.container:nth-child(odd) {
+				background: #fff
+			}
+
+			#box-container {
+				margin: 0;
+				padding: 0
+			}
+
+			.box {
+				list-style-type: none;
+				float: left;
+				margin-bottom: 1rem;
+				margin-left: 1%;
+				margin-right: 1%;
+				width: 48%
+			}
+
+			.box:nth-child(2n+1) {
+				clear: both;
+				margin-left: 0
+			}
+
+			.box:nth-child(2n+0) {
+				margin-right: 0
+			}
+
+			.box a {
+				display: block;
+				width: 100%;
+				height: auto
+			}
+
+			.box a img {
+				-webkit-back-visibility: hidden;
+				display: block;
+				width: 100%;
+				height: auto;
+				vertical-align: bottom
+			}
+		</style>
+
+		<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+		<!--[if IE]><script src="js/html5shiv.min.js"></script><![endif]-->
+		<script src="js/ios-orientationchange-fix.js"></script>
+		<!-- <script src="js/jquery-1.10.2.js"></script> -->
+		<script src="js/jquery.swipebox.js"></script>
+	</head>
+	<body>
+		<div class="htmleaf-container">
+		<!-- <section id="exemple" class="container"> -->
+		<div id="try"></div>
+		
+		<div id="container">
+			<ul class="col"></ul>
+			<ul class="col"></ul>
+			<ul class="col" style="margin-right:0"></ul>
+		</div>
+		<script>
+			var page = 1;
+
+			function loadMeinv(page) {
+				$.ajax({
+					url: 'https://album.bilibili.xiaose.llili.top/api2.php',
+					type: 'get',
+					dataType: 'json',
+					data: {
+						page: page
+					},
+					async: false,
+					success: function(data) {
+						//console.info(data);
+						//获取数据成功
+						if(data.code == 0){
+							data=data.data;
+							console.info(data);
+							for (var i = 0; i < 10; i++) {
+								//console.info(data.items[i].item.title);
+								//每次加载时模拟随机加载图片			
+								var html = "";
+								html = '<li><a href="' + data.items[i].item.pictures[0].img_src + '" class="swipebox" title="'+data.items[i].item.title+'"><img src="' + data.items[i].item.pictures[0].img_src + '" alt="image"></a></li>';
+								$minUl = getMinUl();
+								$minUl.append(html);
+							}
+							
+							// for (var i = 0; i < 9; i++) {
+							// 	//每次加载时模拟随机加载图片			
+							// 	var html = "";
+							// 	html = '<li><a href="' + data.imgurl[i] + '" class="swipebox" title="Mustache Guy"><img src="' + data.imgurl[i] + '" alt="image"></a></li>';
+							// 	$minUl = getMinUl();
+							// 	$minUl.append(html);
+							// 	
+							// }
+						}
+						
+					},
+					error: function(data) {
+
+					}
+				});
+				// $.ajax({
+				// 	url: 'https://code-test.aaakk.top/api.php',
+				// 	type: 'get',
+				// 	dataType: 'json',
+				// 	data: {
+				// 		page: page
+				// 	},
+				// 	async: false,
+				// 	success: function(data) {
+				// 		for (var i = 0; i < 9; i++) {
+				// 			//每次加载时模拟随机加载图片			
+				// 			var html = "";
+				// 			html = '<li><a href="' + data.imgurl[i] + '" class="swipebox" title="Mustache Guy"><img src="' + data.imgurl[i] + '" alt="image"></a></li>';
+				// 			$minUl = getMinUl();
+				// 			$minUl.append(html);
+				// 			
+				// 		}
+				// 	},
+				// 	error: function(data) {
+				// 
+				// 	}
+				// });
+			}
+			loadMeinv(page);
+			$(window).on("scroll", function() {
+				$minUl = getMinUl();
+				if ($minUl.height() <= $(window).scrollTop() + $(window).height()) {
+					//当最短的ul的高度比窗口滚出去的高度+浏览器高度大时加载新图片
+				    page++
+					loadMeinv(page);							
+				}
+			})
+
+			function getMinUl() {
+				//每次获取最短的ul,将图片放到其后		
+				var $arrUl = $("#container .col");
+				var $minUl = $arrUl.eq(0);
+				$arrUl.each(function(index, elem) {
+					if ($(elem).height() < $minUl.height()) {
+						$minUl = $(elem);
+					}
+				});
+				return $minUl;
+			}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				/* Basic Gallery */
+				$('.swipebox').swipebox();
+
+				/* Video */
+				$('.swipebox-video').swipebox();
+
+			});
+		</script>
+	</body>
+</html>
