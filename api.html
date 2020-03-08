@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>API - bilibili相簿 - 热门COS集合</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="referrer" content="no-referrer">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!--<link href="layui/css/layui.css" rel="stylesheet" media="all">-->
+		<link href="https://www.layuicdn.com/layui-v2.5.6/css/layui.css" rel="stylesheet" media="all">
+	</head>
+
+	<body>
+
+		<nav class="layui-bg-blue">
+			<ul class="layui-nav layui-container layui-bg-blue">
+				<li class="layui-nav-item">
+					<a href="index.html">首页</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="//album.bilibili.xiaose.llili.top/v1">V1版本</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="api.html">API接口<span class="layui-badge-dot"></span></a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="javascript:alert('计划开发中')">V3版本<span class="layui-badge-dot"></span></a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="layui-container" style="margin-top: 5px;">
+			<div class="layui-row">
+				<div class="layui-col-md12">
+					<div class="layui-collapse" lay-filter="test">
+						<div class="layui-colla-item">
+							<h2 class="layui-colla-title">获取相册列表</h2>
+							<div class="layui-colla-content">
+								<p>接口方式</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>请求地址</th>
+												<th>版本号</th>
+												<th>请求方式</th>
+												<th>返回数据</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>https://v2.album.bilibili.xiaose.llili.top/getlist.php</td>
+												<td>V2.0.200307</td>
+												<td>GET/POST</td>
+												<td>json</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<p>请求参数</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>参数名称</th>
+												<th>必填</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>page</td>
+												<td>是</td>
+												<td>int</td>
+												<td>页码</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<p>返回数据</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>名称</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>code</td>
+												<td>int</td>
+												<td>请求状态(0成功1失败)</td>
+
+											</tr>
+											<tr>
+												<td>msg</td>
+												<td>string</td>
+												<td>失败原因</td>
+
+											</tr>
+											<tr>
+												<td>data</td>
+												<td>object</td>
+												<td>成功数据，参考data返回值</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p>data数据</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>名称</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>title</td>
+												<td>string</td>
+												<td>相册标题</td>
+											</tr>
+											<tr>
+												<td>pictures</td>
+												<td>object</td>
+												<td>图片数组</td>
+
+											</tr>
+											<tr>
+												<td>doc_id</td>
+												<td>int</td>
+												<td>文章id</td>
+											</tr>
+											<tr>
+												<td>userhead</td>
+												<td>string</td>
+												<td>作者头像</td>
+											</tr>
+											<tr>
+												<td>author</td>
+												<td>string</td>
+												<td>作者名称</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p>pictures数据</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>名称</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>img_src</td>
+												<td>string</td>
+												<td>图片地址</td>
+											</tr>
+											<tr>
+												<td>img_width</td>
+												<td>int</td>
+												<td>图片宽度</td>
+
+											</tr>
+											<tr>
+												<td>img_height</td>
+												<td>int</td>
+												<td>图片高度</td>
+											</tr>
+											<tr>
+												<td>img_size</td>
+												<td>int</td>
+												<td>图片大小</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p>返回示例</p>
+								<pre class="layui-code" lay-title="JavaScript" lay-skin="notepad">{
+    "code":0,
+    "data":[
+        {
+            "title":"南小鸟水着",
+            "pictures":Array[4],
+            "doc_id":1581445,
+            "userhead":"https://i0.hdslb.com/bfs/face/b585404b0f1dacf1c9870ed054cefb2396641327.jpg",
+            "author":"小七Tomo"
+        },
+        {
+            "title":"CN:いとう哀",
+            "pictures":Array[9],
+            "doc_id":5614408,
+            "userhead":"https://i2.hdslb.com/bfs/face/133d2d649a7023535e291d2a8dbd9fb6567ae69e.jpg",
+            "author":"吃肉的mua修"
+        },
+        {
+            "title":"两位傲人双峰小姐姐",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/2a0a1a470bc306c85a9aec78ad19ee7e72ce5451.jpg",
+                    "img_width":650,
+                    "img_height":974,
+                    "img_size":137
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/edd06b1d5301cc2d20183d59e0c13d9e63358ed2.jpg",
+                    "img_width":650,
+                    "img_height":434,
+                    "img_size":78
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/435559661ae164a14098c76ccd5039239e494546.jpg",
+                    "img_width":650,
+                    "img_height":974,
+                    "img_size":151
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/6998b68dafdae0d830af0be2a582043967b5c61b.jpg",
+                    "img_width":650,
+                    "img_height":974,
+                    "img_size":138
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/89e22775b900e8a79f1afae4b8b588e199af5604.jpg",
+                    "img_width":650,
+                    "img_height":974,
+                    "img_size":132
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/02e9e387631cf11a49ef4acbf7c0c11b535cde70.jpg",
+                    "img_width":650,
+                    "img_height":434,
+                    "img_size":55
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/5173f200b9c8e0f558f579b25c6963b96a0514cc.jpg",
+                    "img_width":650,
+                    "img_height":434,
+                    "img_size":57
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/9731b94e4913139c3feb2739651920bed7613012.jpg",
+                    "img_width":650,
+                    "img_height":974,
+                    "img_size":106
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/24d02547dafe74c36d533768fd3e6b00b57a4e45.jpg",
+                    "img_width":650,
+                    "img_height":434,
+                    "img_size":125
+                }
+            ],
+            "doc_id":3316413,
+            "userhead":"https://i2.hdslb.com/bfs/face/63884955e590513477b856632dfe622374b8f853.jpg",
+            "author":"点开头像也不会脱衣"
+        },
+        {
+            "title":"Citrus
+
+柑橘味香气",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/a4ba73ad8ab190183767d8a0591c61ad99782f8d.jpg",
+                    "img_width":650,
+                    "img_height":433,
+                    "img_size":29
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/e2c80aa50d19ae811afc1f1111ad699af0b4bf06.jpg",
+                    "img_width":650,
+                    "img_height":433,
+                    "img_size":25
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/194d119d53ccf385d9b002115d762a67670fcfca.jpg",
+                    "img_width":650,
+                    "img_height":975,
+                    "img_size":62
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/bc9b3629e0fbe05315f0fc1cae6ae221772a8d97.jpg",
+                    "img_width":650,
+                    "img_height":433,
+                    "img_size":31
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/ee838eec8a06ee4d0fde366edf2047f186ec7423.jpg",
+                    "img_width":650,
+                    "img_height":433,
+                    "img_size":31
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/d0f60a3ffa311221117f439248d5eff5e1fb64b8.jpg",
+                    "img_width":650,
+                    "img_height":433,
+                    "img_size":36
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/39d592930cff670e616d4f1a786685f9afbfeebb.jpg",
+                    "img_width":650,
+                    "img_height":975,
+                    "img_size":56
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/f5ddbfb2184ecf21fbc5ea46008ecbe6f146dec0.jpg",
+                    "img_width":650,
+                    "img_height":433,
+                    "img_size":26
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/1175cf244608535e25099e15c8c09514c15d7d87.jpg",
+                    "img_width":650,
+                    "img_height":433,
+                    "img_size":30
+                }
+            ],
+            "doc_id":2888475,
+            "userhead":"https://i2.hdslb.com/bfs/face/63884955e590513477b856632dfe622374b8f853.jpg",
+            "author":"点开头像也不会脱衣"
+        },
+        {
+            "title":"异域风",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/7c4f8b055ba68014935b44cbf46392c2b5ecf36f.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":729
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/ddeb4f9b9f34a865b59636a68faa4ab2856bdd13.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":711
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/b145f544f8246ca7a957c36c8499eb457232b051.jpg",
+                    "img_width":1417,
+                    "img_height":945,
+                    "img_size":775
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/07630546755b374e631337779434ffabf3e581af.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":651
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/f6fc3185b05e418a84fc4c6febec2e61fb31113a.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":954
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/d2a995a1c20b58b6a0a6b5a1f822aaae51a13a61.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":756
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/1ffdaf5398d3e5057a51e5ff98aa4a699d6401c4.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":720
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/7d6ec1028a408c6feced209ffd03b35ccc891c15.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":738
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/3cb79ced1340350f54fc17cc8d08501700c260e8.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":814
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/151173ce7acc1d4c30c823137d40f76372777a55.jpg",
+                    "img_width":1417,
+                    "img_height":945,
+                    "img_size":695
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/7d9f251f9c17c84500f9cd1f305ea044104aa25a.jpg",
+                    "img_width":945,
+                    "img_height":1417,
+                    "img_size":634
+                }
+            ],
+            "doc_id":59756807,
+            "userhead":"https://i0.hdslb.com/bfs/face/6fb3c3078d81357aa8bb37e10b594e2530ac1ffa.jpg",
+            "author":"鱼鱼Mood"
+        },
+        {
+            "title":"リオンの盛り合わせ【？",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/55b9b66b03066ee419479ca45004dafac18f85d9.jpg",
+                    "img_width":4743,
+                    "img_height":3162,
+                    "img_size":3029
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/8cd86bbabad2d71781b3950734c60982c88695be.jpg",
+                    "img_width":4743,
+                    "img_height":3162,
+                    "img_size":2748
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/32834cba5d014c9d81a75a25f07d6eb16dfae3e6.jpg",
+                    "img_width":3162,
+                    "img_height":4743,
+                    "img_size":3209
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/237f50211a4ebf933c8b3aca2aca998e3ff74fac.jpg",
+                    "img_width":4743,
+                    "img_height":3162,
+                    "img_size":2919
+                }
+            ],
+            "doc_id":60507212,
+            "userhead":"https://i1.hdslb.com/bfs/face/8a89b761b0f99ed1f78524f211501efcb1d4e125.jpg",
+            "author":"風剣特特"
+        },
+        {
+            "title":"万粉女装】某小姐姐把我拍得如此硬核！",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/b6c0a530f72379fac93a37f62e70921544394881.jpg",
+                    "img_width":1437,
+                    "img_height":2000,
+                    "img_size":2323
+                }
+            ],
+            "doc_id":59538488,
+            "userhead":"https://i1.hdslb.com/bfs/face/84a3a1c721f5cf5b0a90711dd0804c2b4c5cdd83.jpg",
+            "author":"伦敦土狗哥的沙雕生活"
+        },
+        {
+            "title":"+++春日野穹COS+++德国骨科在召唤",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/d8ead91504d33f79d1af606515e59e0c47b498ac.jpg",
+                    "img_width":1441,
+                    "img_height":2160,
+                    "img_size":1491
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/c6224bf0a1ebd958e8cb9bd026fcbd968098188a.jpg",
+                    "img_width":1440,
+                    "img_height":2160,
+                    "img_size":1496
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/e93cee8fb9e8f5e85636b15ce9827972a279a258.jpg",
+                    "img_width":1440,
+                    "img_height":2160,
+                    "img_size":1339
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/f98d99595342f73ceaeb54b3429be3f713adb302.jpg",
+                    "img_width":2160,
+                    "img_height":1440,
+                    "img_size":1556
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/9ecd372e398155c0d9909a20ebb9386c642c1535.jpg",
+                    "img_width":1440,
+                    "img_height":2160,
+                    "img_size":1343
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/18652a4d347b229c473052c0590ee4d57cfd0781.jpg",
+                    "img_width":2160,
+                    "img_height":1440,
+                    "img_size":1451
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/1dfe348b73ce791bddbc759f32c82fb466f5b70e.jpg",
+                    "img_width":1440,
+                    "img_height":2160,
+                    "img_size":1433
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/bf81840093176e997e4d2f1c5e8057179726107d.jpg",
+                    "img_width":2160,
+                    "img_height":1440,
+                    "img_size":1425
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/e1cd58a8edb452799c59be875498ab01c497b139.jpg",
+                    "img_width":1440,
+                    "img_height":2160,
+                    "img_size":1366
+                }
+            ],
+            "doc_id":1216458,
+            "userhead":"https://i1.hdslb.com/bfs/face/bebce6fe743e44cce5a84a4d4457b39313187b3b.jpg",
+            "author":"一只小千代_"
+        },
+        {
+            "title":"古利特 新条茜COS",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/2580813248de8cd736093a73ea5a37481c33b3be.jpg",
+                    "img_width":2988,
+                    "img_height":4256,
+                    "img_size":2257
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/790d68f8aed15db75a6165c48386817b119d8549.jpg",
+                    "img_width":2988,
+                    "img_height":4262,
+                    "img_size":2513
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/a9aacc6c167ebb62c6a42d09181ba6d318840586.jpg",
+                    "img_width":2988,
+                    "img_height":4260,
+                    "img_size":3413
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/cf512183fcc1845c87c37d04b0dbe703fcfb9ec2.jpg",
+                    "img_width":4476,
+                    "img_height":2116,
+                    "img_size":1454
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/74f26c357a5ac0be5415324104d301931589b109.jpg",
+                    "img_width":2988,
+                    "img_height":4254,
+                    "img_size":2325
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/a4ae7374ca8035f11e6bad5da41fa87e93dd55f7.jpg",
+                    "img_width":4480,
+                    "img_height":2669,
+                    "img_size":1430
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/8c833b4cfd3db555f2c223f09cd32768a677e383.jpg",
+                    "img_width":2988,
+                    "img_height":4262,
+                    "img_size":2559
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/076b4e5c3bd7737b44d50048f1479204f84a55df.jpg",
+                    "img_width":3124,
+                    "img_height":2518,
+                    "img_size":1588
+                }
+            ],
+            "doc_id":10046394,
+            "userhead":"https://i2.hdslb.com/bfs/face/63884955e590513477b856632dfe622374b8f853.jpg",
+            "author":"点开头像也不会脱衣"
+        },
+        {
+            "title":"姬魔恋战纪仲达COS",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/a94b93e81986efd1cb1c8c7ca9196018e01a3688.jpg",
+                    "img_width":1000,
+                    "img_height":667,
+                    "img_size":168
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/25699cb95685aa283a4c1d148b9d670f173f7a93.jpg",
+                    "img_width":1000,
+                    "img_height":667,
+                    "img_size":265
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/bc554eede157e207a3a4da1ea665ac8a6e160a77.jpg",
+                    "img_width":1000,
+                    "img_height":667,
+                    "img_size":237
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/f40f8a5a3cf9b2da429f309541e5462419eec0c3.jpg",
+                    "img_width":1000,
+                    "img_height":667,
+                    "img_size":210
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/7f056faf374a71daf61ad89144b8ce7831ba783f.jpg",
+                    "img_width":1000,
+                    "img_height":667,
+                    "img_size":277
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/a04638950dff23f26366b0d76fac537ffa79a713.jpg",
+                    "img_width":1000,
+                    "img_height":667,
+                    "img_size":218
+                }
+            ],
+            "doc_id":12833191,
+            "userhead":"https://i1.hdslb.com/bfs/face/0661ff1bc410563ea7dce27196827ea92d6073f2.jpg",
+            "author":"姬魔恋战纪"
+        },
+        {
+            "title":"LOL玉剑传说",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/f618386469bbe90567a419e2a15b3f2392bcd0ab.jpg",
+                    "img_width":4743,
+                    "img_height":3162,
+                    "img_size":1510
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/70be4c5930427fa5d746dd3ca309fcd8de64da87.jpg",
+                    "img_width":4743,
+                    "img_height":3162,
+                    "img_size":1285
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/a216beca2197f86fb9fffc5afe919ae815de742d.jpg",
+                    "img_width":5631,
+                    "img_height":2663,
+                    "img_size":2018
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/40584d2e4d81f228e3368672aa3c9bf08b81ca0d.jpg",
+                    "img_width":3162,
+                    "img_height":4743,
+                    "img_size":1547
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/ab4fde81acd15701b664f12f934f5c6af73614ab.jpg",
+                    "img_width":5163,
+                    "img_height":2905,
+                    "img_size":1371
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/240d7f08e5bc3d4ef9f8c7ae6944d4bf14fae956.jpg",
+                    "img_width":4743,
+                    "img_height":3162,
+                    "img_size":1249
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/f8326a971bfc0a02989ac93af975956b401109f1.jpg",
+                    "img_width":5163,
+                    "img_height":2905,
+                    "img_size":1175
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/7d8888b510080e0885457847009aa7818a4cb5f7.jpg",
+                    "img_width":5916,
+                    "img_height":2535,
+                    "img_size":1912
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/4244c5fbe8ef40d6796c4144db84e3445e87bd61.jpg",
+                    "img_width":5163,
+                    "img_height":2905,
+                    "img_size":1302
+                }
+            ],
+            "doc_id":11312102,
+            "userhead":"https://i2.hdslb.com/bfs/face/4c800bed2498772e882649f0a0f3cbd792bd55a7.jpg",
+            "author":"御坂恩"
+        },
+        {
+            "title":"2019/03/10高雄 CWTK D2",
+            "pictures":[
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/cec6c717ddba6ed89e013b560cf4bd3b5147f853.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":4933
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/70859b45e74607c282ec2df0da8f616ad07fccef.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":1378
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/eabf8137b6fc68c666419ac1498cc9eaf653892a.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":3602
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/eecf86bbeda334b73d7a7860087610a39f98e9a7.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":3716
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/eb6f446fe2972536ec7ab89195896279a1f2c9ca.jpg",
+                    "img_width":4469,
+                    "img_height":3356,
+                    "img_size":3106
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/2952e372f783251936c7e380bcd26dfbca86d31e.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":3397
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/2e6609b24a88e4b32218493afe48c7161746e1a7.jpg",
+                    "img_width":4469,
+                    "img_height":3356,
+                    "img_size":3812
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/53a22f5ffa0422db7b8efb813cc0dfac7c56ca63.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":5687
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/5b1f9b7c0405321a13bf2b6594e78ed57cfd9253.jpg",
+                    "img_width":4469,
+                    "img_height":3356,
+                    "img_size":2721
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/c3a10b4c04d1a66c0585b77b137bc7b05199c7dd.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":5110
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/98fad8d83934d60f1459f5af9893cd7623b411b6.jpg",
+                    "img_width":4469,
+                    "img_height":3356,
+                    "img_size":5376
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/318d80653b7a67753b2bd957b6a14fe048a5c949.jpg",
+                    "img_width":3993,
+                    "img_height":2995,
+                    "img_size":16540
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/00d0572ffac73d0320da132804a603fd09899efc.jpg",
+                    "img_width":2677,
+                    "img_height":3569,
+                    "img_size":13584
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/100814a5ac7fd79206007ebeb4d28be915583f96.jpg",
+                    "img_width":4469,
+                    "img_height":3356,
+                    "img_size":2200
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/a175aaedb3c0b8a1d44add01ebf0254f4c241c6c.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":6467
+                },
+                {
+                    "img_src":"https://i0.hdslb.com/bfs/album/57e2f7a0ae190180c84c98496abccc46452a550f.jpg",
+                    "img_width":3355,
+                    "img_height":4470,
+                    "img_size":2544
+                }
+            ],
+            "doc_id":17264168,
+            "userhead":"https://i0.hdslb.com/bfs/face/be83a22d343081868708e5f516089634068df5bd.jpg",
+            "author":"胡服骑射威震天"
+        }
+    ]
+}
+      </pre>
+							
+							</div>
+						<div>
+						<div class="layui-colla-item">
+							<h2 class="layui-colla-title">获取文章详细</h2>
+							<div class="layui-colla-content">
+								<p>接口方式</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>请求地址</th>
+												<th>版本号</th>
+												<th>请求方式</th>
+												<th>返回数据</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>https://v2.album.bilibili.xiaose.llili.top/getdetail.php</td>
+												<td>V2.0.200307</td>
+												<td>GET/POST</td>
+												<td>json</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<p>请求参数</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>参数名称</th>
+												<th>必填</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>doc_id</td>
+												<td>是</td>
+												<td>int</td>
+												<td>文章id,获取方式(https://h.bilibili.com/后的数字)</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<p>返回数据</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>名称</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>code</td>
+												<td>int</td>
+												<td>请求状态(0成功1失败)</td>
+
+											</tr>
+											<tr>
+												<td>msg</td>
+												<td>string</td>
+												<td>失败原因</td>
+
+											</tr>
+											<tr>
+												<td>data</td>
+												<td>object</td>
+												<td>成功数据，参考data返回值</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p>data数据</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>名称</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>title</td>
+												<td>string</td>
+												<td>相册标题</td>
+											</tr>
+											<tr>
+												<td>pictures</td>
+												<td>object</td>
+												<td>图片数组</td>
+
+											</tr>
+											<tr>
+												<td>doc_id</td>
+												<td>int</td>
+												<td>文章id</td>
+											</tr>
+											<tr>
+												<td>author</td>
+												<td>string</td>
+												<td>作者名称</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p>pictures数据</p>
+								<div class="layui-form">
+									<table class="layui-table">
+										<colgroup>
+											<col width="150">
+											<col width="150">
+											<col width="200">
+											<col>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>名称</th>
+												<th>类型</th>
+												<th>说明</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>img_src</td>
+												<td>string</td>
+												<td>图片地址</td>
+											</tr>
+											<tr>
+												<td>img_width</td>
+												<td>int</td>
+												<td>图片宽度</td>
+
+											</tr>
+											<tr>
+												<td>img_height</td>
+												<td>int</td>
+												<td>图片高度</td>
+											</tr>
+											<tr>
+												<td>img_size</td>
+												<td>int</td>
+												<td>图片大小</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<p>返回示例</p>
+								<pre class="layui-code" lay-title="JavaScript" lay-skin="notepad">{
+    "code":0,
+    "data":{
+        "title":"南小鸟水着",
+        "pictures":[            
+            {
+                "img_src":"https://i0.hdslb.com/bfs/album/5be6ce1b4448fee59b6fce4851b9de9d6f3d150f.jpg",
+                "img_width":4256,
+                "img_height":2832,
+                "img_size":2028
+            },
+            {
+                "img_src":"https://i0.hdslb.com/bfs/album/2661dcae482f4fc05b23fa594ffbb34e70df3f28.jpg",
+                "img_width":4256,
+                "img_height":2832,
+                "img_size":2439
+            },
+            {
+                "img_src":"https://i0.hdslb.com/bfs/album/22092f6fe3773b3edcefa3d8c1bafd7ba568ab9f.jpg",
+                "img_width":2832,
+                "img_height":4256,
+                "img_size":2626
+            }
+        ],
+        "doc_id":1581445,
+        "author":"小七Tomo"
+    }
+}
+      </pre>
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<script src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
+		<script src="https://www.layuicdn.com/layui-v2.5.6/lay/modules/flow.js"></script>
+		<script src="https://www.layuicdn.com/layui-v2.5.6/lay/modules/layer.js"></script>
+		<script>
+			layui.use(['element', 'layer'], function() {
+				var element = layui.element;
+				var layer = layui.layer;
+
+				//监听折叠
+				element.on('collapse(test)', function(data) {
+					//					layer.msg('展开状态：' + data.show);
+				});
+			});
+		</script>
+	</body>
+
+</html>
